@@ -1,16 +1,20 @@
-import { SortByFields } from '../enums/sortFields';
+import { SortType } from '../enums/SortType';
 
 export const getVisibleGoods = (
   goods: string[],
-  sortType: SortByFields,
+  sortType: SortType,
   isReversed: boolean,
 ): string[] => {
   const sortedGoods: string[] = [...goods];
 
-  if (sortType === SortByFields.Alphabetic) {
-    sortedGoods.sort((a: string, b: string): number => a.localeCompare(b));
-  } else if (sortType === SortByFields.Length) {
-    sortedGoods.sort((a: string, b: string): number => a.length - b.length);
+  switch (sortType) {
+    case SortType.Alphabetic:
+      sortedGoods.sort((a: string, b: string): number => a.localeCompare(b));
+      break;
+
+    case SortType.Length:
+      sortedGoods.sort((a: string, b: string): number => a.length - b.length);
+      break;
   }
 
   if (isReversed) {
