@@ -23,7 +23,7 @@ export const App: React.FC = () => {
   const [sortType, setSortType] = useState<SortType>(SortType.None);
   const [isReversed, setIsReversed] = useState<boolean>(false);
 
-  const resetGoods = (): void => {
+  const resetGoods = () => {
     setSortType(SortType.None);
     setIsReversed(false);
   };
@@ -34,7 +34,7 @@ export const App: React.FC = () => {
     isReversed,
   );
 
-  const shouldShowResetButton: boolean =
+  const shouldShowResetButton =
     sortType !== SortType.None || isReversed;
 
   return (
